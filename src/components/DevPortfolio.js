@@ -165,10 +165,7 @@ const DevPortfolio = () => {
                   }}
                 >
                   <div className="card-visual">
-                    <div className="card-smoke-layer card-smoke-1" />
-                    <div className="card-smoke-layer card-smoke-2" />
                     <img className="card-image" src={project.imageUrl} alt={project.title} loading="lazy" />
-                    <div className="card-noise" />
                   </div>
 
                   <div className="card-content">

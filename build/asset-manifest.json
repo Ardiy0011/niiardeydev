@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.091c52a6.css",
-    "main.js": "/static/js/main.347f4561.js",
+    "main.css": "/static/css/main.b8b13644.css",
+    "main.js": "/static/js/main.ca0a147a.js",
     "static/media/a-hound.png": "/static/media/a-hound.77f5b126d2f6e2ab1670.png",
     "static/media/fretlockerofficail.png": "/static/media/fretlockerofficail.83b6db1da965981cb24f.png",
     "static/media/addo-addo.jpg": "/static/media/addo-addo.9bfcea6779ecfb8bca52.jpg",
@@ -16,11 +16,11 @@
     "static/media/kaeval.jpg": "/static/media/kaeval.f9336f59b89f933e083d.jpg",
     "static/media/self.jpg": "/static/media/self.379b811a8ec1c2f86ba4.jpg",
     "index.html": "/index.html",
-    "main.091c52a6.css.map": "/static/css/main.091c52a6.css.map",
-    "main.347f4561.js.map": "/static/js/main.347f4561.js.map"
+    "main.b8b13644.css.map": "/static/css/main.b8b13644.css.map",
+    "main.ca0a147a.js.map": "/static/js/main.ca0a147a.js.map"
   },
   "entrypoints": [
-    "static/css/main.091c52a6.css",
-    "static/js/main.347f4561.js"
+    "static/css/main.b8b13644.css",
+    "static/js/main.ca0a147a.js"
   ]
 }

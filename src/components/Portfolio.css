@@ -76,30 +76,23 @@
     box-sizing: border-box;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    will-change: transform;
-    transform: translateZ(0);
 }
 
 /* ── Project Card ── */
 .project-card {
     width: 100%;
     max-width: 320px;
-    background: linear-gradient(165deg, rgba(18, 18, 22, 0.98) 0%, rgba(12, 12, 15, 0.99) 100%);
+    background: #111114;
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 24px;
     overflow: hidden;
-    will-change: transform;
-    transform: translateZ(0);
 }
 
-/* ── Card Visual — greyscale smoky ── */
+/* ── Card Visual ── */
 .card-visual {
     position: relative;
     height: 250px;
-    background: linear-gradient(160deg,
-            rgba(40, 40, 46, 0.9) 0%,
-            rgba(25, 25, 30, 0.95) 50%,
-            rgba(15, 15, 18, 1) 100%);
+    background: #0e0e11;
     overflow: hidden;
 }
 
@@ -110,82 +103,8 @@
     height: 100%;
     object-fit: cover;
     object-position: center 25%;
-    filter: grayscale(1) contrast(1.08) brightness(0.68) saturate(0.75);
+    filter: grayscale(0.6) brightness(0.78);
     opacity: 0.92;
-    transform: translateZ(0) scale(1);
-    animation: cardImageBreath 13s ease-in-out infinite;
-    will-change: filter, transform;
-}
-
-@keyframes cardImageBreath {
-
-    0%,
-    100% {
-        filter: grayscale(1) contrast(1.08) brightness(0.68) saturate(0.75);
-        transform: translateZ(0) scale(1);
-    }
-
-    50% {
-        filter: grayscale(0) contrast(1.03) brightness(0.98) saturate(1.05);
-        transform: translateZ(0) scale(1.08);
-    }
-}
-
-.card-smoke-layer {
-    position: absolute;
-    inset: -50%;
-    width: 200%;
-    height: 200%;
-    filter: blur(30px);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.card-smoke-1 {
-    background: radial-gradient(ellipse at 30% 50%, rgba(180, 180, 190, 0.12) 0%, transparent 60%);
-    animation: cardSmoke1 8s ease-in-out infinite;
-}
-
-.card-smoke-2 {
-    background: radial-gradient(ellipse at 70% 40%, rgba(150, 150, 160, 0.08) 0%, transparent 55%);
-    animation: cardSmoke2 10s ease-in-out infinite 2s;
-}
-
-@keyframes cardSmoke1 {
-
-    0%,
-    100% {
-        transform: translate(0, 0);
-        opacity: 0;
-    }
-
-    50% {
-        transform: translate(10%, 5%);
-        opacity: 1;
-    }
-}
-
-@keyframes cardSmoke2 {
-
-    0%,
-    100% {
-        transform: translate(0, 0);
-        opacity: 0;
-    }
-
-    50% {
-        transform: translate(-8%, 8%);
-        opacity: 1;
-    }
-}
-
-.card-noise {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    background-size: 128px 128px;
-    pointer-events: none;
-    mix-blend-mode: overlay;
 }
 
 /* ── Card Content ── */
