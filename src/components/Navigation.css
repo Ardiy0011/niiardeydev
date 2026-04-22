@@ -61,6 +61,18 @@
     color: #fff;
 }
 
+.nav-tab[aria-label="About"] .nav-icon {
+    color: rgba(196, 160, 82, 0.75);
+}
+
+.nav-tab[aria-label="About"].active .nav-icon {
+    color: rgba(196, 160, 82, 0.75);
+}
+
+.nav-tab[aria-label="About"].active .nav-label {
+    color: rgba(196, 160, 82, 0.65);
+}
+
 .nav-tab.active .nav-label {
     color: rgba(255, 255, 255, 0.85);
 }

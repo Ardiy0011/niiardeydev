@@ -1,5 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import './Portfolio.css';
 import compactempImage from '../images/dev/compactemp.jpg';
 import p2pImage from '../images/dev/p2prevamp1.jpg';
@@ -121,8 +123,6 @@ const projects = [
 ];
 
 const DevPortfolio = () => {
-  const viewportRef = useRef(null);
-
   return (
     <motion.div
       className="portfolio"
@@ -151,41 +151,44 @@ const DevPortfolio = () => {
       </div>
 
       <div className="slider-section">
-        <div className="slider-viewport" ref={viewportRef}>
-          <div className="slider-track">
-            {projects.map((project) => (
-              <div className="slide-wrapper" key={project.id}>
-                <div
-                  className="project-card"
-                  style={{
-                    '--card-accent-text': project.accent.text,
-                    '--card-accent-border': project.accent.border,
-                    '--card-accent-start': project.accent.start,
-                    '--card-accent-end': project.accent.end,
-                  }}
-                >
-                  <div className="card-visual">
-                    <img className="card-image" src={project.imageUrl} alt={project.title} loading="lazy" />
-                  </div>
+        <Swiper
+          slidesPerView={1.12}
+          spaceBetween={14}
+          centeredSlides={true}
+          grabCursor={true}
+        >
+          {projects.map((project) => (
+            <SwiperSlide key={project.id}>
+              <div
+                className="project-card"
+                style={{
+                  '--card-accent-text': project.accent.text,
+                  '--card-accent-border': project.accent.border,
+                  '--card-accent-start': project.accent.start,
+                  '--card-accent-end': project.accent.end,
+                }}
+              >
+                <div className="card-visual">
+                  <img className="card-image" src={project.imageUrl} alt={project.title} loading="lazy" />
+                </div>
 
-                  <div className="card-content">
-                    <h2 className="card-title">{project.title}</h2>
-                    <p className="card-meta">{project.year} &middot; {project.category}</p>
-                    <p className="card-description">{project.description}</p>
-                    <div className="card-tech">
-                      {project.tech.map((t) => (
-                        <span key={t} className="tech-tag">{t}</span>
-                      ))}
-                    </div>
-                    <a className="card-link" href={project.url} target="_blank" rel="noreferrer">
-                      Open Site
-                    </a>
+                <div className="card-content">
+                  <h2 className="card-title">{project.title}</h2>
+                  <p className="card-meta">{project.year} &middot; {project.category}</p>
+                  <p className="card-description">{project.description}</p>
+                  <div className="card-tech">
+                    {project.tech.map((t) => (
+                      <span key={t} className="tech-tag">{t}</span>
+                    ))}
                   </div>
+                  <a className="card-link" href={project.url} target="_blank" rel="noreferrer">
+                    Open Site
+                  </a>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </motion.div>
   );
