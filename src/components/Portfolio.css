@@ -1,0 +1,269 @@
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 70px);
+    min-height: calc(100dvh - 70px);
+    padding: 20px 20px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ── Header ── */
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.portfolio-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.portfolio-brand {
+    margin-top: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: #e8f4f4;
+}
+
+.portfolio-brand span {
+    background: linear-gradient(135deg, #40e0d0 0%, #117c7c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ── Slider Section ── */
+.slider-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+}
+
+.slider-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-track {
+    display: flex;
+    cursor: grab;
+    touch-action: pan-y;
+}
+
+.slider-track:active {
+    cursor: grabbing;
+}
+
+.slide-wrapper {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* ── Project Card ── */
+.project-card {
+    width: 100%;
+    max-width: 320px;
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+/* ── Card Visual — greyscale smoky ── */
+.card-visual {
+    position: relative;
+    height: 250px;
+    background: linear-gradient(160deg,
+            rgba(40, 40, 46, 0.9) 0%,
+            rgba(25, 25, 30, 0.95) 50%,
+            rgba(15, 15, 18, 1) 100%);
+    overflow: hidden;
+}
+
+.card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    filter: grayscale(1) contrast(1.08) brightness(0.68) saturate(0.75);
+    opacity: 0.92;
+    transform: scale(1);
+    animation: cardImageBreath 13s ease-in-out infinite;
+}
+
+@keyframes cardImageBreath {
+
+    0%,
+    100% {
+        filter: grayscale(1) contrast(1.08) brightness(0.68) saturate(0.75);
+        transform: scale(1);
+    }
+
+    50% {
+        filter: grayscale(0) contrast(1.03) brightness(0.98) saturate(1.05);
+        transform: scale(1.08);
+    }
+}
+
+.card-smoke-layer {
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    filter: blur(30px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.card-smoke-1 {
+    background: radial-gradient(ellipse at 30% 50%, rgba(180, 180, 190, 0.12) 0%, transparent 60%);
+    animation: cardSmoke1 8s ease-in-out infinite;
+}
+
+.card-smoke-2 {
+    background: radial-gradient(ellipse at 70% 40%, rgba(150, 150, 160, 0.08) 0%, transparent 55%);
+    animation: cardSmoke2 10s ease-in-out infinite 2s;
+}
+
+@keyframes cardSmoke1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translate(10%, 5%);
+        opacity: 1;
+    }
+}
+
+@keyframes cardSmoke2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translate(-8%, 8%);
+        opacity: 1;
+    }
+}
+
+.card-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 128px 128px;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+/* ── Card Content ── */
+.card-content {
+    padding: 20px 24px 24px;
+}
+
+.card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+}
+
+.card-meta {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 14px;
+}
+
+.card-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tech-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--card-accent-border, rgba(255, 255, 255, 0.06));
+    color: var(--card-accent-text, rgba(255, 255, 255, 0.4));
+}
+
+.card-link {
+    margin-top: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 38px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--card-accent-text, #d2ffff);
+    border: 1px solid var(--card-accent-border, rgba(64, 224, 208, 0.35));
+    background: linear-gradient(145deg, var(--card-accent-start, rgba(64, 224, 208, 0.13)), var(--card-accent-end, rgba(17, 124, 124, 0.16)));
+}
+
+/* ── Pagination Dots ── */
+.slider-pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.pagination-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.pagination-dot.active {
+    width: 24px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.7);
+}

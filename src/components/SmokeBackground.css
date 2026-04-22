@@ -1,0 +1,165 @@
+.smoke-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+.smoke-bg-layer {
+    position: absolute;
+    width: 250%;
+    height: 250%;
+    filter: blur(50px);
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.smoke-bg-1 {
+    top: -60%;
+    left: -80%;
+    background: radial-gradient(ellipse at 40% 50%, rgba(255, 255, 255, 0.06) 0%, rgba(200, 200, 210, 0.03) 30%, transparent 60%);
+    animation: bgSmoke1 12s ease-in-out infinite;
+}
+
+.smoke-bg-2 {
+    top: -40%;
+    left: -50%;
+    background: radial-gradient(ellipse at 60% 40%, rgba(180, 185, 195, 0.05) 0%, rgba(160, 165, 175, 0.02) 35%, transparent 55%);
+    animation: bgSmoke2 16s ease-in-out infinite 2s;
+}
+
+.smoke-bg-3 {
+    top: -70%;
+    left: -60%;
+    background: radial-gradient(ellipse at 35% 65%, rgba(200, 200, 210, 0.04) 0%, transparent 50%);
+    animation: bgSmoke3 14s ease-in-out infinite 4s;
+}
+
+.smoke-bg-4 {
+    top: -30%;
+    left: -90%;
+    background: radial-gradient(ellipse at 70% 30%, rgba(220, 220, 230, 0.035) 0%, transparent 45%);
+    animation: bgSmoke4 18s ease-in-out infinite 1s;
+}
+
+.smoke-bg-5 {
+    top: -50%;
+    left: -40%;
+    background: radial-gradient(ellipse at 50% 55%, rgba(190, 195, 210, 0.04) 0%, transparent 50%);
+    animation: bgSmoke5 20s ease-in-out infinite 5s;
+}
+
+.smoke-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(10, 10, 10, 0.6) 70%, #0a0a0a 100%);
+}
+
+.smoke-grain {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+    background-size: 128px 128px;
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+}
+
+@keyframes bgSmoke1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translate(12%, 8%) rotate(15deg) scale(1.1);
+        opacity: 0.9;
+    }
+
+    80% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes bgSmoke2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.5;
+    }
+
+    55% {
+        transform: translate(-10%, 10%) rotate(-12deg) scale(1.05);
+        opacity: 0.7;
+    }
+
+    85% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes bgSmoke3 {
+
+    0%,
+    100% {
+        transform: translate(5%, -3%) rotate(5deg);
+        opacity: 0;
+    }
+
+    35% {
+        opacity: 0.5;
+    }
+
+    65% {
+        transform: translate(-6%, 8%) rotate(-8deg);
+        opacity: 0.7;
+    }
+}
+
+@keyframes bgSmoke4 {
+
+    0%,
+    100% {
+        transform: translate(-5%, 5%) rotate(-3deg);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.4;
+    }
+
+    60% {
+        transform: translate(8%, -4%) rotate(10deg);
+        opacity: 0.6;
+    }
+}
+
+@keyframes bgSmoke5 {
+
+    0%,
+    100% {
+        transform: translate(3%, 3%) rotate(2deg);
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.3;
+    }
+
+    70% {
+        transform: translate(-5%, 5%) rotate(-6deg);
+        opacity: 0.5;
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bd60b2fa.css",
+    "main.js": "/static/js/main.5f9d6221.js",
+    "static/media/a-hound.png": "/static/media/a-hound.77f5b126d2f6e2ab1670.png",
+    "static/media/fretlockerofficail.png": "/static/media/fretlockerofficail.83b6db1da965981cb24f.png",
+    "static/media/addo-addo.jpg": "/static/media/addo-addo.9bfcea6779ecfb8bca52.jpg",
+    "static/media/neds.jpg": "/static/media/neds.ce53575d56726288dbb3.jpg",
+    "static/media/skrentalimg.jpg": "/static/media/skrentalimg.907ff4a98c25d63bbfd8.jpg",
+    "static/media/fiipoks.jpg": "/static/media/fiipoks.f83cea6137489ac5083f.jpg",
+    "static/media/nostal.jpg": "/static/media/nostal.2aeda642c598c18ee2a4.jpg",
+    "static/media/compactemp.jpg": "/static/media/compactemp.54639f82622c45b88a69.jpg",
+    "static/media/josephngeraldine.jpg": "/static/media/josephngeraldine.d57a6c10443fb9dc7de2.jpg",
+    "static/media/p2prevamp1.jpg": "/static/media/p2prevamp1.54f2add299c8e45683b4.jpg",
+    "static/media/kudi-k.jpg": "/static/media/kudi-k.ba918558c238716fe66e.jpg",
+    "static/media/kaeval.jpg": "/static/media/kaeval.f9336f59b89f933e083d.jpg",
+    "static/media/self.jpg": "/static/media/self.379b811a8ec1c2f86ba4.jpg",
+    "index.html": "/index.html",
+    "main.bd60b2fa.css.map": "/static/css/main.bd60b2fa.css.map",
+    "main.5f9d6221.js.map": "/static/js/main.5f9d6221.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd60b2fa.css",
+    "static/js/main.5f9d6221.js"
+  ]
+}

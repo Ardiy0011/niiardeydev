@@ -1,0 +1,85 @@
+.nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: 0 24px 12px;
+    pointer-events: none;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 6px;
+    border-radius: 20px;
+    background: rgba(16, 16, 20, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    pointer-events: all;
+    max-width: 320px;
+    margin: 0 auto;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.nav-tab {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 6px 18px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 14px;
+}
+
+.nav-icon {
+    color: rgba(255, 255, 255, 0.3);
+    transition: color 0.3s ease;
+    display: flex;
+}
+
+.nav-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.nav-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.3);
+    transition: color 0.3s ease;
+}
+
+.nav-tab.active .nav-icon {
+    color: #fff;
+}
+
+.nav-tab.active .nav-label {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.nav-tab.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.nav-tab.disabled .nav-icon,
+.nav-tab.disabled .nav-label {
+    color: rgba(255, 255, 255, 0.28);
+}
+
+.nav-indicator {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    z-index: -1;
+}
