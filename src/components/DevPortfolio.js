@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useMotionValue, animate } from 'framer-motion';
+import { motion } from 'framer-motion';
 import './Portfolio.css';
 import compactempImage from '../images/dev/compactemp.jpg';
 import p2pImage from '../images/dev/p2prevamp1.jpg';
@@ -122,56 +122,45 @@ const projects = [
 
 const DevPortfolio = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const x = useMotionValue(0);
   const viewportRef = useRef(null);
-  const [slideWidth, setSlideWidth] = useState(0);
-  const lastIdx = useRef(0);
 
   useEffect(() => {
-    const measure = () => {
-      if (viewportRef.current) {
-        setSlideWidth(viewportRef.current.offsetWidth);
+    const viewport = viewportRef.current;
+    if (!viewport) {
+      return undefined;
+    }
+
+    const syncActiveIndex = () => {
+      const slideWidth = viewport.clientWidth;
+      if (!slideWidth) {
+        return;
       }
+
+      const idx = Math.round(viewport.scrollLeft / slideWidth);
+      const clamped = Math.max(0, Math.min(idx, projects.length - 1));
+      setActiveIndex(clamped);
     };
-    measure();
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
+
+    viewport.addEventListener('scroll', syncActiveIndex, { passive: true });
+    window.addEventListener('resize', syncActiveIndex);
+
+    return () => {
+      viewport.removeEventListener('scroll', syncActiveIndex);
+      window.removeEventListener('resize', syncActiveIndex);
+    };
   }, []);
 
-  useEffect(() => {
-    const unsubscribe = x.on('change', (latest) => {
-      if (slideWidth > 0) {
-        const idx = Math.round(-latest / slideWidth);
-        const clamped = Math.max(0, Math.min(idx, projects.length - 1));
-        if (clamped !== lastIdx.current) {
-          lastIdx.current = clamped;
-          setActiveIndex(clamped);
-        }
-      }
+  const goToSlide = (index) => {
+    const viewport = viewportRef.current;
+    if (!viewport) {
+      return;
+    }
+
+    viewport.scrollTo({
+      left: index * viewport.clientWidth,
+      behavior: 'smooth',
     });
-    return unsubscribe;
-  }, [x, slideWidth]);
-
-  const handleDragEnd = (_, info) => {
-    const currentX = x.get();
-    const vx = info.velocity.x;
-    const sw = slideWidth || 300;
-
-    const projected = currentX + vx * 0.35;
-
-    let target = Math.round(-projected / sw);
-    target = Math.max(0, Math.min(target, projects.length - 1));
-
-    lastIdx.current = target;
-    setActiveIndex(target);
-    animate(x, -target * sw, {
-      type: 'spring',
-      velocity: vx,
-      stiffness: 80,
-      damping: 20,
-      mass: 0.8,
-      restDelta: 0.5,
-    });
+    setActiveIndex(index);
   };
 
   return (
@@ -203,18 +192,7 @@ const DevPortfolio = () => {
 
       <div className="slider-section">
         <div className="slider-viewport" ref={viewportRef}>
-          <motion.div
-            className="slider-track"
-            style={{ x }}
-            drag="x"
-            dragConstraints={{
-              left: -(projects.length - 1) * (slideWidth || 300),
-              right: 0,
-            }}
-            dragElastic={0.12}
-            dragMomentum={false}
-            onDragEnd={handleDragEnd}
-          >
+          <div className="slider-track">
             {projects.map((project) => (
               <div className="slide-wrapper" key={project.id}>
                 <div
@@ -249,7 +227,7 @@ const DevPortfolio = () => {
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         <div className="slider-pagination">
@@ -257,6 +235,7 @@ const DevPortfolio = () => {
             <div
               key={i}
               className={`pagination-dot ${i === activeIndex ? 'active' : ''}`}
+              onClick={() => goToSlide(i)}
             />
           ))}
         </div>

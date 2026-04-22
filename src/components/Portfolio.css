@@ -51,18 +51,23 @@
 
 .slider-viewport {
     width: 100%;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     position: relative;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    scrollbar-width: none;
+}
+
+.slider-viewport::-webkit-scrollbar {
+    display: none;
 }
 
 .slider-track {
     display: flex;
-    cursor: grab;
-    touch-action: pan-y;
-}
-
-.slider-track:active {
-    cursor: grabbing;
+    width: max-content;
 }
 
 .slide-wrapper {
@@ -71,6 +76,8 @@
     justify-content: center;
     padding: 0 10px;
     box-sizing: border-box;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
 }
 
 /* ── Project Card ── */
@@ -260,6 +267,7 @@
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
     transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    cursor: pointer;
 }
 
 .pagination-dot.active {
