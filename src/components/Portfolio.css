@@ -55,7 +55,6 @@
     overflow-y: hidden;
     position: relative;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x;
     scrollbar-width: none;
@@ -67,29 +66,30 @@
 
 .slider-track {
     display: flex;
-    width: max-content;
 }
 
 .slide-wrapper {
-    flex: 0 0 100%;
+    min-width: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    padding: 0 10px;
     box-sizing: border-box;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
     scroll-snap-stop: always;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 /* ── Project Card ── */
 .project-card {
     width: 100%;
     max-width: 320px;
-    background: linear-gradient(165deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+    background: linear-gradient(165deg, rgba(18, 18, 22, 0.98) 0%, rgba(12, 12, 15, 0.99) 100%);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 24px;
     overflow: hidden;
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 /* ── Card Visual — greyscale smoky ── */
@@ -112,8 +112,9 @@
     object-position: center 25%;
     filter: grayscale(1) contrast(1.08) brightness(0.68) saturate(0.75);
     opacity: 0.92;
-    transform: scale(1);
+    transform: translateZ(0) scale(1);
     animation: cardImageBreath 13s ease-in-out infinite;
+    will-change: filter, transform;
 }
 
 @keyframes cardImageBreath {
@@ -121,12 +122,12 @@
     0%,
     100% {
         filter: grayscale(1) contrast(1.08) brightness(0.68) saturate(0.75);
-        transform: scale(1);
+        transform: translateZ(0) scale(1);
     }
 
     50% {
         filter: grayscale(0) contrast(1.03) brightness(0.98) saturate(1.05);
-        transform: scale(1.08);
+        transform: translateZ(0) scale(1.08);
     }
 }
 
@@ -251,27 +252,4 @@
     color: var(--card-accent-text, #d2ffff);
     border: 1px solid var(--card-accent-border, rgba(64, 224, 208, 0.35));
     background: linear-gradient(145deg, var(--card-accent-start, rgba(64, 224, 208, 0.13)), var(--card-accent-end, rgba(17, 124, 124, 0.16)));
-}
-
-/* ── Pagination Dots ── */
-.slider-pagination {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 20px;
-}
-
-.pagination-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-    cursor: pointer;
-}
-
-.pagination-dot.active {
-    width: 24px;
-    border-radius: 3px;
-    background: rgba(255, 255, 255, 0.7);
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import './Portfolio.css';
 import nedsImage from '../images/neds.jpg';
@@ -57,47 +57,7 @@ const projects = [
 ];
 
 const Portfolio = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
   const viewportRef = useRef(null);
-
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    if (!viewport) {
-      return undefined;
-    }
-
-    const syncActiveIndex = () => {
-      const slideWidth = viewport.clientWidth;
-      if (!slideWidth) {
-        return;
-      }
-
-      const idx = Math.round(viewport.scrollLeft / slideWidth);
-      const clamped = Math.max(0, Math.min(idx, projects.length - 1));
-      setActiveIndex(clamped);
-    };
-
-    viewport.addEventListener('scroll', syncActiveIndex, { passive: true });
-    window.addEventListener('resize', syncActiveIndex);
-
-    return () => {
-      viewport.removeEventListener('scroll', syncActiveIndex);
-      window.removeEventListener('resize', syncActiveIndex);
-    };
-  }, []);
-
-  const goToSlide = (index) => {
-    const viewport = viewportRef.current;
-    if (!viewport) {
-      return;
-    }
-
-    viewport.scrollTo({
-      left: index * viewport.clientWidth,
-      behavior: 'smooth',
-    });
-    setActiveIndex(index);
-  };
 
   return (
     <motion.div
@@ -164,16 +124,6 @@ const Portfolio = () => {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="slider-pagination">
-          {projects.map((_, i) => (
-            <div
-              key={i}
-              className={`pagination-dot ${i === activeIndex ? 'active' : ''}`}
-              onClick={() => goToSlide(i)}
-            />
-          ))}
         </div>
       </div>
     </motion.div>

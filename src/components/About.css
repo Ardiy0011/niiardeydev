@@ -120,23 +120,43 @@
     }
 }
 
-.about-phone {
+.about-contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.contact-icon {
+    flex-shrink: 0;
+}
+
+.about-phone,
+.about-whatsapp {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     padding: 12px 28px;
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     letter-spacing: 0.08em;
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     transition: all 0.3s ease;
+    min-width: 200px;
+    justify-content: center;
 }
 
-.about-phone:active {
+.about-phone:active,
+.about-whatsapp:active {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.15);
+}
+
+.about-whatsapp {
+    color: rgba(37, 211, 102, 0.8);
+    border-color: rgba(37, 211, 102, 0.2);
 }
