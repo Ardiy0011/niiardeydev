@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bd60b2fa.css",
-    "main.js": "/static/js/main.5f9d6221.js",
+    "main.js": "/static/js/main.8af6ea72.js",
     "static/media/a-hound.png": "/static/media/a-hound.77f5b126d2f6e2ab1670.png",
     "static/media/fretlockerofficail.png": "/static/media/fretlockerofficail.83b6db1da965981cb24f.png",
     "static/media/addo-addo.jpg": "/static/media/addo-addo.9bfcea6779ecfb8bca52.jpg",
@@ -17,10 +17,10 @@
     "static/media/self.jpg": "/static/media/self.379b811a8ec1c2f86ba4.jpg",
     "index.html": "/index.html",
     "main.bd60b2fa.css.map": "/static/css/main.bd60b2fa.css.map",
-    "main.5f9d6221.js.map": "/static/js/main.5f9d6221.js.map"
+    "main.8af6ea72.js.map": "/static/js/main.8af6ea72.js.map"
   },
   "entrypoints": [
     "static/css/main.bd60b2fa.css",
-    "static/js/main.5f9d6221.js"
+    "static/js/main.8af6ea72.js"
   ]
 }

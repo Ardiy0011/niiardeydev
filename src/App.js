@@ -46,15 +46,19 @@ function App() {
   }, []);
 
   useEffect(() => {
-    let favicon = document.querySelector("link[rel='icon']");
+    const iconRels = ['icon', 'shortcut icon', 'apple-touch-icon'];
 
-    if (!favicon) {
-      favicon = document.createElement('link');
-      favicon.setAttribute('rel', 'icon');
-      document.head.appendChild(favicon);
-    }
+    iconRels.forEach((rel) => {
+      let link = document.querySelector(`link[rel='${rel}']`);
 
-    favicon.setAttribute('href', selfImage);
+      if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', rel);
+        document.head.appendChild(link);
+      }
+
+      link.setAttribute('href', selfImage);
+    });
   }, []);
 
   const handleSplashEnd = () => setShowSplash(false);
